@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.pzh.hl</groupId>
+    <artifactId>duohuimei</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>user-manage-service</module>
+        <module>Invoke-test-service</module>
+        <module>eureka</module>
+    </modules>
+    <!-- 打包方式 -->
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- parent标签和properties标签的关联和区别？？-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Finchley.SR1</spring-cloud.version>
+        <mapper.starter.version>2.0.3</mapper.starter.version>
+        <mysql.version>5.1.32</mysql.version>
+        <pageMetper.starter.version>1.2.5</pageMetper.starter.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--springcloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <!-- type:pom  说明 这个依赖就是一个pom.xml文件-->
+                <type>pom</type>
+                <!-- ???-->
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 通用mapper启动器-->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${mapper.starter.version}</version>
+            </dependency>
+
+            <!-- mysql驱动-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 在dependcyManagement中的dependencies和在其外的dependencies区别
+        之外：所有儿子都有
+        在内：儿子需要手动引用才会有
+     -->
+    <dependencies>
+        <!-- 每个子项目都需要lombok依赖？？？-->
+        <!-- 开发者工具依赖之一    lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <!-- springboot插件-->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

@@ -1,0 +1,16 @@
+server:
+  # 设置服务的端口号 为 10086
+  port: 10086
+spring:
+  application:
+    #设置服务的名称为 eureka-server
+    name: eureka-server
+    #设置该服务 向哪些 Eureka服务端 注册自己
+    #如果当前服务是Eureka服务端，则defaultZone不包含自己
+eureka:
+  client:
+    service-url:
+      #Eureka服务端的注册地址（如果有多个Eureka服务端，那么 defaultZone地址有多个，地址之间
+      #用“,”分隔开）
+      #如果当前服务是Eureka服务端，则defaultZone不包含自己
+      defaultZone: http://127.0.0.1:10087/eureka

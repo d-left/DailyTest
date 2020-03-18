@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: invoke-service
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
+server:
+  port: 8083
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 3000  # 设置hystrix的超时时间为3s

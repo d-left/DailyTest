@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/db_duohuimei
+    username: root
+    password: 123456
+  application:
+    name: user-manage-service
+mybatis:
+  #给实体类 取别名----》别名为类名（不区分大小写？？？）
+  #之后mybatis可以通过  类名 来找到  对应的实体类文件了
+  type-aliases-package: cn.pzh.hl.user.pojo
+#配置eureka
+eureka:
+  client:
+    service-url:
+      #向所有的Eureka服务注册自己
+      #http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka 分别 代表eureka1和eureka2
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka
